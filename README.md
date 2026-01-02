@@ -10,7 +10,9 @@ The trophy updates automatically every day using **GitHub Actions**.
 - SVG graphics  
 
 ### 📄 Output Preview
-![AR Trophy](https://raw.githubusercontent.com/Ayushrai9142/ayush-trophy/main/trophy.svg)
+![AR Trophy](./trophy.svg)
+
+
 
 
 
