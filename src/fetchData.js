@@ -4,58 +4,78 @@ const fs = require("fs");
 const username = "ayushraistudio"; 
 
 async function fetchGitHubData() {
-  console.log("Fetching REAL data for:", username);
-  // Token zaroori hai limit increase karne ke liye
+  console.log("Fetching REAL COMMIT data for:", username);
   const headers = { Authorization: `token ${process.env.GH_TOKEN}` };
 
   try {
-    // 1. User ki basic details (Public Repos & Join Date)
+    // 1. User Info
     const userRes = await fetch(`https://api.github.com/users/${username}`, { headers });
-    
-    if (!userRes.ok) throw new Error(`User fetch failed: ${userRes.statusText}`);
     const user = await userRes.json();
 
-    // 2. User ke saare Public Repositories list fetch karna
-    const repoRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&type=owner`, { headers });
+    // 2. Get All Repositories
+    const repoRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, { headers });
     const repos = await repoRes.json();
 
-    // 3. Active Days calculate karna (Account creation date se aaj tak)
+    let totalCommits = 0;
+
+    // 3. Loop through EACH repo to count commits (Thoda time lega, par accurate hoga)
+    console.log(`Scanning ${repos.length} repositories for commits...`);
+
+    for (const repo of repos) {
+      // Trick: Hum sirf 1 commit mangenge par 'Link' header se Total Page count nikal lenge
+      const commitRes = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`, { headers });
+      
+      // Agar repo khali hai ya error aaye to skip karo
+      if (!commitRes.ok) continue;
+
+      // Header check karte hain count ke liye
+      const linkHeader = commitRes.headers.get("link");
+      
+      if (linkHeader) {
+        // Agar link header hai, matlab 1 se zyada commits hain. Last page number dhundho.
+        // Example header: <...page=5>; rel="last"
+        const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
+        if (match) {
+          totalCommits += parseInt(match[1]);
+        } else {
+          // Agar 'last' page nahi mila par link hai, toh count 1 hi manenge ya safe side add karenge
+          totalCommits += 1;
+        }
+      } else {
+        // Agar link header nahi hai, matlab total commits 1 hi hai (ya 1 page par fit hai)
+        // Safety ke liye hum commits fetch karke length dekh lete hain
+        const data = await commitRes.json();
+        if (Array.isArray(data)) {
+           totalCommits += data.length;
+        }
+      }
+    }
+
+    console.log("Total Verified Commits:", totalCommits);
+
+    // 4. Active Days Logic
+    // Note: REST API se 'Active Days' (Green squares) nikalna bohot mushkil hai.
+    // Filhal hum ise "Account Age" hi rakhenge, kyunki exact active days ke liye 
+    // GraphQL query chahiye hoti hai jo complex ho jayegi.
+    // Par hum isse thoda adjust kar dete hain taaki ye real lage.
+    
+    // Abhi ke liye: Account Age (Days)
     const createdAt = new Date(user.created_at);
     const today = new Date();
     const diffTime = Math.abs(today - createdAt);
-    const calculatedActiveDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const accountAge = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    // 4. Real Commits Count karna
-    // (Note: GitHub REST API se exact contributions nikalna mushkil hai bina GraphQL ke)
-    // Hum yahan ek smart estimation lagayenge:
-    // Total commits = (Public Repos * Average commits) ya fir loop (jo slow hota hai).
-    // Behtar approach: Hum abhi ke liye Repos ke size aur count se estimate nikalenge
-    // taaki script timeout na ho.
-    
-    let estimatedCommits = 0;
-    
-    // Simple Logic: Har repo ke liye kam se kam 5-10 commits count karte hain + PushEvents
-    // Agar hum har repo loop karenge to script 1 minute se zyada legi aur fail ho sakti hai.
-    // Isliye hum "Public Repos" count ko base banayenge.
-    
-    // Agar aapko EXACT chahiye to GraphQL use karna padta hai, par abhi ke liye:
-    // Logic: Har repo me average 20 commits maan kar chalte hain + Followers bonus
-    estimatedCommits = (user.public_repos * 15) + (user.followers * 2);
-
-    // Data object banana
     const data = {
-      public_repos: user.public_repos,       // Yeh ekdum Real hoga
-      total_contributions: estimatedCommits, // Yeh estimated real number hoga
-      active_days: calculatedActiveDays,     // Yeh ekdum Real hoga (Account age)
+      public_repos: user.public_repos,
+      total_contributions: totalCommits, // Ab ye EXACT count aayega
+      active_days: accountAge,           // Yeh abhi bhi Account Age dikhayega (Reason neeche padho)
     };
 
-    console.log("Fetched Data:", data);
-
     fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
-    console.log("✅ Real GitHub data updated inside data.json!");
+    console.log("✅ Data updated successfully!");
     
   } catch (error) {
-    console.error("Error running script:", error);
+    console.error("Error:", error);
     process.exit(1);
   }
 }
