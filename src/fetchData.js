@@ -77,15 +77,15 @@ async function fetchGitHubData() {
     for (let i = 0; i < daysArray.length; i++) {
       const day = daysArray[i];
       
-      // Agar contribution hai to streak badhao
+     
       if (day.contributionCount > 0) {
         currentStreak++;
       } else {
-        // Agar aaj 0 contribution hai, to streak mat todo (abhi din baaki hai)
+       
         if (day.date === today) {
           continue;
         }
-        // Agar kal ya usse pehle 0 tha, to streak break
+       
         break;
       }
     }
@@ -93,10 +93,10 @@ async function fetchGitHubData() {
     console.log(`✅ Data Fetched for ${username} | Streak: ${currentStreak}, Contributions: ${totalContributions}`);
 
     const data = {
-      public_repos: userData.repositories.totalCount, // Data fetch kar rahe hain par display nahi karenge
+      public_repos: userData.repositories.totalCount, 
       total_contributions: totalContributions,
       active_days: activeDaysCount,
-      current_streak: currentStreak // Yeh naya data hai
+      current_streak: currentStreak 
     };
 
     fs.writeFileSync("data.json", JSON.stringify(data, null, 2));
@@ -109,4 +109,3 @@ async function fetchGitHubData() {
 }
 
 fetchGitHubData();
-
