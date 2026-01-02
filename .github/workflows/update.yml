@@ -2,11 +2,16 @@ name: Update Trophy
 on:
   schedule:
     - cron: "0 0 * * *" # Daily midnight update
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger button
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    # 👇 YEH LINE SABSE ZAROORI HAI (Push karne ki permission)
+    permissions:
+      contents: write
+
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
@@ -17,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: "16" # Version 16 is more stable for fetch@2
 
       - name: Install dependencies
         run: npm install node-fetch@2
@@ -25,12 +30,14 @@ jobs:
       - name: Fetch GitHub data and update SVG
         run: |
           node src/fetchData.js
-          node src/generateSVG.js
+          node src/generateTrophy.js 
 
       - name: Commit changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add trophy.svg data.json
-          git commit -m "Auto-update trophy"
+          # Agar koi change nahi hua to error na aaye, isliye "|| echo" lagaya hai
+          git commit -m "Auto-update trophy" || echo "No changes to commit"
           git push
+          
