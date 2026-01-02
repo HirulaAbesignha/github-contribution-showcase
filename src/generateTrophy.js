@@ -3,7 +3,7 @@ const fs = require("fs");
 try {
   const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
 
-  // Fixed Widescreen Layout - Same Design, Repos replaced with Streak 🔥
+  
   const svg = `
   <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
     <defs>
@@ -52,7 +52,7 @@ try {
     <g transform="translate(590, 90)">
       <rect x="0" y="0" width="160" height="110" rx="10" fill="rgba(0,0,0,0.3)" stroke="#ff5e00" stroke-width="2"/>
       <text x="80" y="35" text-anchor="middle" class="stat-label" fill="#ff5e00">Current Streak</text>
-      <text x="80" y="80" text-anchor="middle" class="stat-number fade-in">${data.current_streak} 🔥</text>
+      <text x="80" y="80" text-anchor="middle" class="stat-number fade-in">${data.current_streak} </text>
     </g>
 
   </svg>`;
