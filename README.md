@@ -51,9 +51,9 @@ Replace `YOUR_USERNAME` and paste this:
 
 ## 🎨 Customization
 You can customize:
-- 🎨 Colors → `src/theme.js`
+- 🎨 Colors → `src/generateTrophy.js`
 - 📐 Size → change `width` in README
-- 🧱 Layout / stats → `index.js`
+- 🧱 Layout / stats → `src/generateTrophy.js`
 
 ---
 
@@ -80,4 +80,5 @@ This will generate `trophy.svg` locally.
 <p align="center">
   ⭐ Created by <a href="https://github.com/ayushraistudio">Ayush Rai</a> — Star the repo if you like it ⭐
 </p>
+
 
