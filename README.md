@@ -13,6 +13,7 @@
       <img src="https://img.shields.io/github/forks/ayushraistudio/ayush-trophy?style=for-the-badge&color=00ccff" />
     </a>
   </p>
+</div>
 
 ---
 
@@ -46,19 +47,20 @@ Pick a design, copy the link, and replace `YOUR_USERNAME`.
 
 ---
 
-</div>
-
 ## 🚀 Quick Setup
 1. **Fork** this repository.
-2. Go to **Actions** tab and click **"Enable workflows"**.
-3. Select **Update Trophy** workflow and click **"Run workflow"**.
-4. Copy your theme's URL and paste it into your profile README.
+2. Go to the **Actions** tab and click **“Enable workflows”**.
+3. Select **Update Trophy** workflow and click **“Run workflow”**.
+4. Copy your theme’s URL and paste it into your profile README.
+
+---
 
 ## 🤝 Contributing
-Want to build a new design? Check our **[Contributing Guide](./CONTRIBUTING.md)** and send a PR! 🚀
+Want to build a new design?  
+Check our **[Contributing Guide](./CONTRIBUTING.md)** and send a PR.
 
-## 🛠️ Local Development
-```bash
+---
+
 ## 🛠️ Local Development
 
 ```bash
@@ -68,7 +70,11 @@ npm install
 node src/fetchData.js
 node src/generateTrophy.js
 ```
-<br />
-<p align="center">
-⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> and our <a href="https://github.com/ayushraistudio/ayush-trophy/graphs/contributors">awesome contributors</a> ⭐
+
+
+
+<br /><p align="center">
+⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> and our
+<a href="https://github.com/ayushraistudio/ayush-trophy/graphs/contributors">awesome contributors</a> ⭐
 </p>
+
