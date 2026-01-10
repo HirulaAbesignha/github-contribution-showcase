@@ -1,12 +1,14 @@
 function generateTrophy(data, theme) {
   const displayName = data.name || "GitHub User";
   
-  // Variables for Concatenation Themes (New Themes)
+  // Variables for Concatenation Themes (Themes 4, 5, 6)
   var active = data.active_days;
   var contribs = data.total_contributions;
   var streak = data.current_streak;
 
-  // 1. NEON THEME (ORIGINAL CODE - NO CHANGE)
+  // =================================================================
+  // 1. NEON THEME (ORIGINAL - NO CHANGE)
+  // =================================================================
   const neonTheme = `
     <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
       <defs>
@@ -49,7 +51,9 @@ function generateTrophy(data, theme) {
       </g>
     </svg>`;
 
-  // 2. CYBERPUNK THEME (ORIGINAL CODE - NO CHANGE)
+  // =================================================================
+  // 2. CYBERPUNK THEME (ORIGINAL - NO CHANGE)
+  // =================================================================
   const cyberpunkTheme = `
     <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
       <rect width="800" height="250" fill="#000" />
@@ -72,7 +76,9 @@ function generateTrophy(data, theme) {
       </g>
     </svg>`;
 
-  // 3. GOLD THEME (ORIGINAL CODE - NO CHANGE)
+  // =================================================================
+  // 3. GOLD THEME (ORIGINAL - NO CHANGE)
+  // =================================================================
   const goldTheme = `
     <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
       <rect width="800" height="250" fill="#111" />
@@ -93,7 +99,9 @@ function generateTrophy(data, theme) {
       </g>
     </svg>`;
 
-  // 4. SAKURA THEME (Safe Concatenation)
+  // =================================================================
+  // 4. SAKURA THEME (Previous Fixed Code)
+  // =================================================================
   var sakuraTheme = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">' +
       '<rect width="800" height="250" rx="15" fill="#1a0f1d" stroke="#ff79c6" stroke-width="2" />' +
       '<text x="400" y="50" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#ff79c6">🌸 ' + displayName.toUpperCase() + ' 🌸</text>' +
@@ -105,7 +113,9 @@ function generateTrophy(data, theme) {
       '<g transform="translate(590, 110)"><text x="80" y="30" text-anchor="middle" fill="#f8f8f2">Streak</text>' +
       '<text x="80" y="80" text-anchor="middle" fill="#fff" font-size="40" font-weight="bold">' + streak + '</text></g></svg>';
 
-  // 5. MATRIX THEME (Safe Concatenation)
+  // =================================================================
+  // 5. MATRIX THEME (Previous Fixed Code)
+  // =================================================================
   var matrixTheme = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">' +
       '<rect width="800" height="250" rx="10" fill="#000000" stroke="#00ff00" stroke-width="2" />' +
       '<text x="20" y="40" font-family="Courier New" font-size="20" fill="#00ff00">system_stats:~/github$ run stats.sh</text>' +
@@ -115,33 +125,37 @@ function generateTrophy(data, theme) {
       '<text x="50" y="210" font-family="Courier New" font-size="22" fill="#00ff00">> CURRENT_STREAK: ' + streak + '</text>' +
       '<text x="780" y="230" text-anchor="end" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.5">_status: operational</text></svg>';
 
-  // 6. HACKER/CYBER NEON THEME (New Design based on Photo)
+  // =================================================================
+  // 6. HACKER/CYBER NEON THEME (UPDATED AS PER PHOTO: Filled Boxes)
+  // =================================================================
   var hackerTheme = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">' +
       '<defs>' +
-        '<filter id="glow-pink" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/><feFlood flood-color="#ff0099" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
-        '<filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/><feFlood flood-color="#00f3ff" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
-        '<filter id="glow-yellow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/><feFlood flood-color="#e1ff00" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+        '<linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#050505;stop-opacity:1" /><stop offset="100%" style="stop-color:#101015;stop-opacity:1" /></linearGradient>' +
+        '<filter id="glow-pink"><feGaussianBlur stdDeviation="2.5" result="blur"/><feFlood flood-color="#ff00cc" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+        '<filter id="glow-cyan"><feGaussianBlur stdDeviation="2.5" result="blur"/><feFlood flood-color="#00f3ff" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+        '<filter id="glow-yellow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feFlood flood-color="#ffcc00" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
       '</defs>' +
-      '<rect width="800" height="250" fill="#050505" />' +
-      '<rect x="10" y="55" width="780" height="185" rx="10" fill="none" stroke="#00f3ff" stroke-width="2" filter="url(#glow-cyan)" opacity="0.5"/>' +
-      '<text x="400" y="35" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="28" fill="#00f3ff" filter="url(#glow-cyan)">⚡ ' + displayName.toUpperCase() + ' ⚡</text>' +
-      '<line x1="200" y1="45" x2="600" y2="45" stroke="#ff0099" stroke-width="2" stroke-dasharray="5,5" filter="url(#glow-pink)"/>' +
-      // Active Days (Pink Box)
-      '<g transform="translate(40, 90)">' +
-        '<rect width="200" height="110" rx="10" fill="none" stroke="#ff0099" stroke-width="2" filter="url(#glow-pink)"/>' +
-        '<text x="100" y="35" text-anchor="middle" font-family="monospace" font-size="16" fill="#ff0099">ACTIVE DAYS</text>' +
+      '<rect width="800" height="250" fill="url(#mainGrad)" />' +
+      // Frame
+      '<rect x="10" y="10" width="780" height="230" rx="10" fill="none" stroke="#00f3ff" stroke-width="2" opacity="0.4"/>' +
+      '<text x="400" y="45" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="26" fill="#00f3ff" filter="url(#glow-cyan)">⚡ ' + displayName.toUpperCase() + ' ⚡</text>' +
+      '<line x1="200" y1="60" x2="600" y2="60" stroke="#ff00cc" stroke-width="2" stroke-dasharray="5,5"/>' +
+      // 1. Active Days (Pink/Purple Filled)
+      '<g transform="translate(40, 95)">' +
+        '<rect width="200" height="110" rx="10" fill="rgba(255, 0, 204, 0.15)" stroke="#ff00cc" stroke-width="2" filter="url(#glow-pink)"/>' +
+        '<text x="100" y="35" text-anchor="middle" font-family="monospace" font-size="14" fill="#ff00cc">ACTIVE DAYS</text>' +
         '<text x="100" y="80" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="40" fill="#fff">' + active + '</text>' +
       '</g>' +
-      // Total Contributions (Cyan Box - Center)
-      '<g transform="translate(280, 80)">' +
-        '<rect width="240" height="130" rx="10" fill="none" stroke="#00f3ff" stroke-width="3" filter="url(#glow-cyan)"/>' +
-        '<text x="120" y="35" text-anchor="middle" font-family="monospace" font-size="18" fill="#00f3ff">CONTRIBUTIONS</text>' +
+      // 2. Contributions (Blue/Cyan Filled)
+      '<g transform="translate(280, 85)">' +
+        '<rect width="240" height="130" rx="10" fill="rgba(0, 243, 255, 0.15)" stroke="#00f3ff" stroke-width="3" filter="url(#glow-cyan)"/>' +
+        '<text x="120" y="35" text-anchor="middle" font-family="monospace" font-size="16" fill="#00f3ff">CONTRIBUTIONS</text>' +
         '<text x="120" y="90" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="50" fill="#fff">' + contribs + '</text>' +
       '</g>' +
-      // Streak (Yellow Box)
-      '<g transform="translate(560, 90)">' +
-        '<rect width="200" height="110" rx="10" fill="none" stroke="#e1ff00" stroke-width="2" filter="url(#glow-yellow)"/>' +
-        '<text x="100" y="35" text-anchor="middle" font-family="monospace" font-size="16" fill="#e1ff00">CURRENT STREAK</text>' +
+      // 3. Streak (Yellow Filled)
+      '<g transform="translate(560, 95)">' +
+        '<rect width="200" height="110" rx="10" fill="rgba(255, 204, 0, 0.15)" stroke="#ffcc00" stroke-width="2" filter="url(#glow-yellow)"/>' +
+        '<text x="100" y="35" text-anchor="middle" font-family="monospace" font-size="14" fill="#ffcc00">CURRENT STREAK</text>' +
         '<text x="100" y="80" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="40" fill="#fff">' + streak + '</text>' +
       '</g>' +
     '</svg>';
