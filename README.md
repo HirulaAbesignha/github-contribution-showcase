@@ -1,72 +1,69 @@
 <div align="center">
-  <img src="./trophy_neon.svg" width="700" />
+  <img src="./trophy_neon.svg" width="800" />
   
   <h1>🏆 Personal GitHub Trophy Generator</h1>
-  <p><b>Automatically generate multi-themed animated GitHub Trophies using GitHub Actions.</b></p>
+  <p><b>Showcase your GitHub journey with beautiful, automated, and multi-themed trophies!</b></p>
 
   <p>
     <a href="https://github.com/ayushraistudio/ayush-trophy/issues">
       <img src="https://img.shields.io/github/issues/ayushraistudio/ayush-trophy?style=for-the-badge&color=ff0055" />
     </a>
-    <a href="https://github.com/ayushraistudio/ayush-trophy/network/members">
-      <img src="https://img.shields.io/github/forks/ayushraistudio/ayush-trophy?style=for-the-badge&color=00ccff" />
-    </a>
     <a href="https://github.com/ayushraistudio/ayush-trophy/stargazers">
       <img src="https://img.shields.io/github/stars/ayushraistudio/ayush-trophy?style=for-the-badge&color=ffcc00" />
+    </a>
+    <a href="https://github.com/ayushraistudio/ayush-trophy/network/members">
+      <img src="https://img.shields.io/github/forks/ayushraistudio/ayush-trophy?style=for-the-badge&color=00ccff" />
     </a>
   </p>
 </div>
 
 ---
 
-## 🎨 Available Themes
-Pick the style that matches your profile!
+## 🎨 Choose Your Style
+Select a theme, copy the link, and just replace `YOUR_USERNAME` with your actual GitHub username. 
+*Note: Clicking the trophy images will bring you back to this repository.*
 
-| Theme | Preview | Link to Copy |
-| :--- | :---: | :--- |
-| 🟢 **Neon** | <img src="./trophy_neon.svg" width="250" /> | `.../main/trophy_neon.svg` |
-| 🟣 **Cyberpunk** | <img src="./trophy_cyberpunk.svg" width="250" /> | `.../main/trophy_cyberpunk.svg` |
+### 🟢 Neon Style (Default)
+<a href="https://github.com/ayushraistudio/ayush-trophy">
+  <img src="./trophy_neon.svg" width="750" alt="Neon Trophy" />
+</a>
 
----
+**Use this link:**
+```text
+[https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg](https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg)
 
-## ✨ Features
-- 🔄 **Daily Auto Update** via GitHub Actions  
-- 🎨 **Multi-Theme Support** (Neon & Cyberpunk)
-- 📊 **Dynamic Stats** (Active Days, Contributions, Streak 🔥)  
-- 🤝 **Open for Contributions** (Add your own themes!)
+### 🟣 Cyberpunk Style
+<a href="https://github.com/ayushraistudio/ayush-trophy">
+  <img src="./trophy_cyberpunk.svg" width="750" alt="Cyberpunk Trophy" />
+</a>
 
----
-
-## 🚀 Add This Trophy to Your Profile
-
-### Step 1: Fork the Repository
-Fork this repo into your GitHub account.
-
-### Step 2: Enable GitHub Actions
-1. Open your fork → **Actions**
-2. Enable workflows
-3. Select **Update Trophy**
-4. Click **Run workflow**
-
-### Step 3: Embed in Your Profile README
-Replace `YOUR_USERNAME` and choose your theme:
-
-```html
-<img src="[https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg](https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg)" width="700" />
-
-<img src="[https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg](https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg)" width="700" />
+**Use this link:**
+```text
+[https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg](https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg)
 
 
 ---
 
-## 🤝 Contributing
-Want to add a new design? We love new themes! Please check our [Contributing Guide](./CONTRIBUTING.md) and send a PR! 🚀
+## 🚀 How to Setup
+1. **Fork** this repository to your account.
+2. Go to your fork's **Actions** tab and click **"I understand my workflows, go ahead and enable them"**.
+3. Select the **Update Trophy** workflow from the left sidebar and click **Run workflow** to generate your trophies for the first time.
+4. Copy your favorite theme's link from the gallery above and paste it into your profile README.
 
 ---
 
-## 🛠️ Run Locally
+## 🤝 Want to Add Your Own Design?
+We love new themes! If you are a designer or developer:
+1. Check out our **[Contributing Guide](./CONTRIBUTING.md)**.
+2. Add your SVG logic in `src/generateTrophy.js`.
+3. Open a **Pull Request** and get your theme featured in the gallery above!
+
+---
+
+## 🛠️ Developers Corner
+To run this project locally:
 ```bash
-git clone [https://github.com/YOUR_USERNAME/ayush-trophy.git](https://github.com/YOUR_USERNAME/ayush-trophy.git)
+git clone [https://github.com/ayushraistudio/ayush-trophy.git](https://github.com/ayushraistudio/ayush-trophy.git)
 cd ayush-trophy
 npm install
 node src/fetchData.js
@@ -74,5 +71,8 @@ node src/generateTrophy.js
 
 
 <p align="center">
-⭐ Created by <a href="https://github.com/ayushraistudio">Ayush Rai</a> — Special thanks to <a href="https://www.google.com/search?q=https://github.com/tshivam2007">Shivam Tiwari</a> for the Cyberpunk theme! ⭐
+⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> ⭐
+
+
+<i>Special thanks to all our contributors for making this project awesome!</i>
 </p>
