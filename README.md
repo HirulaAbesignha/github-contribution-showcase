@@ -59,13 +59,16 @@ Want to build a new design? Check our **[Contributing Guide](./CONTRIBUTING.md)*
 
 ## 🛠️ Local Development
 ```bash
-git clone [https://github.com/ayushraistudio/ayush-trophy.git](https://github.com/ayushraistudio/ayush-trophy.git)
+## 🛠️ Local Development
+
+```bash
+git clone https://github.com/ayushraistudio/ayush-trophy.git
 cd ayush-trophy
 npm install
 node src/fetchData.js
 node src/generateTrophy.js
-
+```
 <br />
 <p align="center">
-⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> and our <a href="https://www.google.com/search?q=https://github.com/ayushraistudio/ayush-trophy/graphs/contributors">awesome contributors</a> ⭐
+⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> and our <a href="https://github.com/ayushraistudio/ayush-trophy/graphs/contributors">awesome contributors</a> ⭐
 </p>
