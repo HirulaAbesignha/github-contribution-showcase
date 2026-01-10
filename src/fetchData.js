@@ -1,10 +1,15 @@
 const axios = require('axios');
 
 async function fetchData(username) {
-  const token = process.env.GITHUB_TOKEN; 
+  const token = process.env.GITHUB_TOKEN;
+  
+  if (!token) {
+    throw new Error("GITHUB_TOKEN is missing in Environment Variables");
+  }
+
   const query = `
-    query {
-      user(login: "${username}") {
+    query($login: String!) {
+      user(login: $login) {
         name
         login
         contributionsCollection {
@@ -24,17 +29,18 @@ async function fetchData(username) {
   try {
     const response = await axios.post(
       'https://api.github.com/graphql',
-      { query },
+      { query, variables: { login: username } },
       { headers: { Authorization: `Bearer ${token}` } }
     );
     
+    if (response.data.errors) {
+      throw new Error(response.data.errors[0].message);
+    }
+
     const user = response.data.data.user;
     if (!user) throw new Error("User not found");
 
-    // Name Logic: Agar name nahi hai toh login (username) use karega
     const displayName = user.name || user.login;
-
-    // Streak and Active Days Logic
     const days = user.contributionsCollection.contributionCalendar.weeks
       .flatMap(week => week.contributionDays)
       .reverse();
@@ -48,7 +54,6 @@ async function fetchData(username) {
         activeDays++;
         if (!streakBroken) currentStreak++;
       } else {
-        // Agar aaj commit nahi hai to streak kal se check hoti hai
         if (index > 0) streakBroken = true;
       }
     });
@@ -60,7 +65,8 @@ async function fetchData(username) {
       current_streak: currentStreak
     };
   } catch (error) {
-    throw new Error("GitHub Data Fetch Failed");
+    console.error("FetchData Error:", error.message);
+    throw error;
   }
 }
 
