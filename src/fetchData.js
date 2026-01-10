@@ -2,6 +2,7 @@ const axios = require('axios');
 
 async function fetchData(username) {
   const token = process.env.GITHUB_TOKEN;
+
   
   if (!token) {
     throw new Error("GITHUB_TOKEN is missing in Environment Variables");
