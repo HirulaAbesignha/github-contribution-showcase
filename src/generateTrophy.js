@@ -1,70 +1,71 @@
-const fs = require("fs");
+const axios = require('axios');
 
-try {
-  // Data read karo
-  const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
+async function fetchData(username) {
+  const token = process.env.GITHUB_TOKEN; 
+  const query = `
+    query {
+      user(login: "${username}") {
+        name
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                contributionCount
+                date
+              }
+            }
+          }
+        }
+      }
+    }`;
 
-  // Agar galti se data.name undefined hua to default 'GitHub User' use karega
-  const displayName = data.name || "GitHub User";
-
-  const svg = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
-    <defs>
-      <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" style="stop-color:#0f2027;stop-opacity:1" />
-        <stop offset="50%" style="stop-color:#203a43;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#2c5364;stop-opacity:1" />
-      </linearGradient>
-
-      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-      </filter>
-
-      <style>
-        .title { font-family: sans-serif; font-weight: bold; font-size: 22px; fill: white; letter-spacing: 2px; text-transform: uppercase; }
-        .stat-label { font-family: sans-serif; font-size: 14px; fill: #aeaeae; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-number { font-family: sans-serif; font-weight: 800; font-size: 40px; fill: white; }
-        
-        /* Animation Classes */
-        .fade-in { animation: fadeIn 2s ease-in-out; }
-        .pulse { animation: pulse 3s infinite alternate; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes pulse { 0% { transform: scale(1); transform-origin: center; } 100% { transform: scale(1.05); transform-origin: center; } }
-      </style>
-    </defs>
-
-    <rect x="10" y="10" width="780" height="230" rx="15" fill="url(#bgGradient)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
-
-    <text x="400" y="50" text-anchor="middle" class="title">⚡ ${displayName.toUpperCase()} STATS ⚡</text>
+  try {
+    const response = await axios.post(
+      'https://api.github.com/graphql',
+      { query },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
     
-    <line x1="200" y1="65" x2="600" y2="65" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    const user = response.data.data.user;
+    if (!user) throw new Error("User not found");
 
-    <g transform="translate(50, 90)">
-      <rect x="0" y="0" width="160" height="110" rx="10" fill="rgba(0,0,0,0.3)" stroke="#00ffcc" stroke-width="2"/>
-      <text x="80" y="35" text-anchor="middle" class="stat-label" fill="#00ffcc">Active Days</text>
-      <text x="80" y="80" text-anchor="middle" class="stat-number fade-in">${data.active_days}</text>
-    </g>
+    const days = user.contributionsCollection.contributionCalendar.weeks
+      .flatMap(week => week.contributionDays)
+      .reverse(); // Latest din se check karne ke liye
 
-    <g transform="translate(290, 80)">
-      <rect class="pulse" x="0" y="0" width="220" height="130" rx="12" fill="rgba(0,0,0,0.5)" stroke="#ff00cc" stroke-width="3" filter="url(#glow)"/>
-      <text x="110" y="40" text-anchor="middle" class="stat-label" fill="#ff00cc">Contributions</text>
-      <text x="110" y="90" text-anchor="middle" class="stat-number fade-in" style="font-size: 50px;">${data.total_contributions}</text>
-    </g>
+    let activeDays = 0;
+    let currentStreak = 0;
+    let streakBroken = false;
 
-    <g transform="translate(590, 90)">
-      <rect x="0" y="0" width="160" height="110" rx="10" fill="rgba(0,0,0,0.3)" stroke="#ff5e00" stroke-width="2"/>
-      <text x="80" y="35" text-anchor="middle" class="stat-label" fill="#ff5e00">Current Streak</text>
-      <text x="80" y="80" text-anchor="middle" class="stat-number fade-in">${data.current_streak} </text>
-    </g>
+    days.forEach((day, index) => {
+      // 1. Active Days calculate karein
+      if (day.contributionCount > 0) {
+        activeDays++;
+      }
 
-  </svg>`;
+      // 2. Current Streak calculate karein (Latest dinon se)
+      if (!streakBroken) {
+        if (day.contributionCount > 0) {
+          currentStreak++;
+        } else if (index > 0) { 
+          // Agar aaj commit nahi kiya to streak kal tak ki dikhayega
+          // Lekin agar kal bhi nahi kiya tha, to streak break mani jayegi
+          streakBroken = true;
+        }
+      }
+    });
 
-  fs.writeFileSync("trophy.svg", svg);
-  console.log("🏆 Streak Trophy SVG Updated!");
-  
-} catch (error) {
-  console.error("Error generating SVG:", error);
-  process.exit(1);
+    return {
+      name: user.name || username,
+      total_contributions: user.contributionsCollection.contributionCalendar.totalContributions,
+      active_days: activeDays,
+      current_streak: currentStreak
+    };
+  } catch (error) {
+    console.error("Fetch Error:", error.message);
+    throw new Error("GitHub Data Fetch Failed");
+  }
 }
+
+module.exports = { fetchData };
