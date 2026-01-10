@@ -1,9 +1,12 @@
 const fs = require("fs");
 
 try {
+  // Data read karo
   const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
 
-  
+  // Agar galti se data.name undefined hua to default 'GitHub User' use karega
+  const displayName = data.name || "GitHub User";
+
   const svg = `
   <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
     <defs>
@@ -34,7 +37,8 @@ try {
 
     <rect x="10" y="10" width="780" height="230" rx="15" fill="url(#bgGradient)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
 
-    <text x="400" y="50" text-anchor="middle" class="title">⚡ Ayush Rai Stats ⚡</text>
+    <text x="400" y="50" text-anchor="middle" class="title">⚡ ${displayName.toUpperCase()} STATS ⚡</text>
+    
     <line x1="200" y1="65" x2="600" y2="65" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
 
     <g transform="translate(50, 90)">
@@ -64,4 +68,3 @@ try {
   console.error("Error generating SVG:", error);
   process.exit(1);
 }
-
