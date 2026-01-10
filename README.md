@@ -1,107 +1,59 @@
-<div align="center">
-  <h1>🏆 Personal GitHub Trophy Generator</h1>
-  <p><b>Showcase your GitHub journey with beautiful, automated, and multi-themed trophies!</b></p>
+# 🏆 GitHub Contribution Showcase API
 
-  <p>
-    <a href="https://github.com/ayushraistudio/ayush-trophy/issues">
-      <img src="https://img.shields.io/github/issues/ayushraistudio/ayush-trophy?style=for-the-badge&color=ff0055" />
-    </a>
-    <a href="https://github.com/ayushraistudio/ayush-trophy/stargazers">
-      <img src="https://img.shields.io/github/stars/ayushraistudio/ayush-trophy?style=for-the-badge&color=ffcc00" />
-    </a>
-    <a href="https://github.com/ayushraistudio/ayush-trophy/network/members">
-      <img src="https://img.shields.io/github/forks/ayushraistudio/ayush-trophy?style=for-the-badge&color=00ccff" />
-    </a>
-  </p>
-</div>
+Give your GitHub profile a premium look with dynamic, high-performance trophies! This API fetches your real-time contributions, active days, and streaks directly from GitHub's GraphQL API.
+
+[![](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ayushraistudio/github-contribution-showcase)
+[![](https://img.shields.io/badge/Maintained%20with-Vercel-black?logo=vercel)](https://vercel.com)
 
 ---
 
-## 🎨 Theme Gallery
-Copy the code snippet below and paste it into your profile README. Just replace `YOUR_USERNAME` with your actual GitHub username.
+## 🎨 Theme Gallery & Quick Setup
 
-<div align="center">
-<table align="center">
-  <tr>
-    <td align="center">
-      <b>🟢 Neon Style (Default)</b><br />
-      <a href="https://github.com/ayushraistudio/ayush-trophy">
-        <img src="./trophy_neon.svg" width="600" />
-      </a>
-      <br />
-      <sub>Copy this code:</sub><br />
-      <code>&lt;a href="https://github.com/ayushraistudio/ayush-trophy"&gt;&lt;img src="https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg" width="700" /&gt;&lt;/a&gt;</code>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <br /><b>🟣 Cyberpunk Style</b><br />
-      <a href="https://github.com/ayushraistudio/ayush-trophy">
-        <img src="./trophy_cyberpunk.svg" width="600" />
-      </a>
-      <br />
-      <sub>Copy this code:</sub><br />
-      <code>&lt;a href="https://github.com/ayushraistudio/ayush-trophy"&gt;&lt;img src="https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg" width="700" /&gt;&lt;/a&gt;</code>
-    </td>
-  </tr>
-</table>
-</div>
+Choose your favorite design and copy the code below to paste it into your **Profile README**.
+> **Note:** Replace `YOUR_USERNAME` in the code with your actual GitHub username.
+> 
 
----
+### 1. 🟢 Neon Glassmorphism (Default)
+The classic glowing look with smooth animations.
 
-## 🚀 Quick Setup
-1. **Fork** this repository.
-2. Go to the **Actions** tab and click **“Enable workflows”**.
-3. Select **Update Trophy** workflow and click **“Run workflow”**.
-4. Copy your theme’s URL and paste it into your profile README.
+![Neon Preview](https://personal-trophy.vercel.app/api?username=ayushraistudio&theme=neon)
 
----
-
-## 🤝 Contributing
-Want to build a new design?  
-Check our **[Contributing Guide](./CONTRIBUTING.md)** and send a PR.
-
----
-
-## 🛠️ Local Development
-
-```bash
-git clone https://github.com/ayushraistudio/ayush-trophy.git
-cd ayush-trophy
-npm install
-node src/fetchData.js
-node src/generateTrophy.js
+```markdown
+[![GitHub Trophy](https://personal-trophy.vercel.app/api?username=YOUR_USERNAME&theme=neon)](https://github.com/ayushraistudio/github-contribution-showcase)
 ```
 
+---
 
+### 2. 🟣 Cyberpunk 2077
+High-contrast, futuristic design for the tech enthusiasts.
 
-<br /><p align="center">
-⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> and our
-<a href="https://github.com/ayushraistudio/ayush-trophy/graphs/contributors">awesome contributors</a> ⭐
-</p>
+![Cyberpunk Preview](https://personal-trophy.vercel.app/api?username=ayushraistudio&theme=cyberpunk)
 
+```markdown
+[![GitHub Trophy](https://personal-trophy.vercel.app/api?username=YOUR_USERNAME&theme=cyberpunk)](https://github.com/ayushraistudio/github-contribution-showcase)
+```
 
+---
 
+### 3. 🟡 Luxury Gold
+A classy, premium look for a standout profile.
 
+![Gold Preview](https://personal-trophy.vercel.app/api?username=ayushraistudio&theme=gold)
 
-<div align="center">
+```markdown
+[![GitHub Trophy](https://personal-trophy.vercel.app/api?username=YOUR_USERNAME&theme=gold)](https://github.com/ayushraistudio/github-contribution-showcase)
+```
 
-  ## 🏆 My Coding Stats Showcase
-  
-  <img src="https://personal-trophy.vercel.app/api?username=ayushraistudio&theme=neon" width="800" alt="Ayush's GitHub Trophy" />
+## 🚀 Why use this API?
+- **Live Updates:** No manual updates required. Every time someone visits your profile, they see your freshest stats!
+- **Fast Performance:** Powered by Vercel Serverless Functions for ultra-fast loading times.
+- **Click to Discover:** When someone clicks on your trophy, they are redirected straight back to this repository so they can create their own!
 
-  <br/>
+## 🛠️ Installation for Developers
+If you want to host your own instance of this API:
+1. **Fork** this repository.
+2. Deploy it to **Vercel**.
+3. Add your `GITHUB_TOKEN` in the Environment Variables.
 
-  <p align="center">
-    <b>Select Theme:</b> 
-    <a href="https://personal-trophy.vercel.app/api?username=tshivam2007&theme=neon">Neon</a> • 
-    <a href="https://personal-trophy.vercel.app/api?username=tshivam2007&theme=cyberpunk">Cyberpunk</a> • 
-    <a href="https://personal-trophy.vercel.app/api?username=tshivam2007&theme=gold">Luxury Gold</a>
-  </p>
-
-</div>
-
-
-
-
-
+---
+<p align="center">Made with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a></p>
