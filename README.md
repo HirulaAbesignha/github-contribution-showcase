@@ -68,6 +68,16 @@ Classic terminal look for the true coding vibe.
 [![GitHub Trophy](https://personal-trophy.vercel.app/api?username=YOUR_USERNAME&theme=matrix)](https://github.com/ayushraistudio/github-contribution-showcase)
 ```
 
+### 6. 🔥 Hacker / Cyber Neon Theme
+Futuristic design with glowing filled boxes (Pink, Blue, Yellow) and dark gradient background.
+
+![Hacker Preview](https://personal-trophy.vercel.app/api?username=ayushraistudio&theme=hacker&v=1)
+
+```markdown
+[![GitHub Trophy](https://personal-trophy.vercel.app/api?username=YOUR_USERNAME&theme=hacker)](https://github.com/ayushraistudio/github-contribution-showcase)
+```
+
+
 ## 🚀 Why use this API?
 - **Live Updates:** No manual updates required. Every time someone visits your profile, they see your freshest stats!
 - **Fast Performance:** Powered by Vercel Serverless Functions for ultra-fast loading times.
@@ -88,6 +98,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ---
 <p align="center">Made with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a></p>
+
 
 
 
