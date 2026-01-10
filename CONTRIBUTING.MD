@@ -30,10 +30,14 @@ const themes = {
     </svg>
   `
 };
+```
 
 
-### Step 3: Test Your Theme
-Since this is a Vercel project, you can test it locally using vercel dev or simply push to your fork and check the Vercel preview URL:https://your-preview-url.vercel.app/api?username=your_username&theme=your_theme_name
+### **Step 3: Test Your Theme**
+Since this is a Vercel project, you can test it by pushing to your fork and checking the Vercel preview URL:
+`https://your-preview-url.vercel.app/api?username=your_username&theme=your_theme_name`
 
-### Step 4: Submit a Pull Request
+### **Step 4: Submit a Pull Request**
 Once you are happy with the look, commit your changes and open a PR!
+
+---
