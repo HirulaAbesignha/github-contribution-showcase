@@ -18,8 +18,9 @@
 ---
 
 ## 🎨 Theme Gallery
-Pick a design, copy the link, and replace `YOUR_USERNAME`.
+Copy the code snippet below and paste it into your profile README. Just replace `YOUR_USERNAME` with your actual GitHub username.
 
+<div align="center">
 <table align="center">
   <tr>
     <td align="center">
@@ -28,8 +29,8 @@ Pick a design, copy the link, and replace `YOUR_USERNAME`.
         <img src="./trophy_neon.svg" width="600" />
       </a>
       <br />
-      <sub>Copy this link:</sub><br />
-      <code>https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg</code>
+      <sub>Copy this code:</sub><br />
+      <code>&lt;a href="https://github.com/ayushraistudio/ayush-trophy"&gt;&lt;img src="https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg" width="700" /&gt;&lt;/a&gt;</code>
     </td>
   </tr>
   <tr>
@@ -39,11 +40,12 @@ Pick a design, copy the link, and replace `YOUR_USERNAME`.
         <img src="./trophy_cyberpunk.svg" width="600" />
       </a>
       <br />
-      <sub>Copy this link:</sub><br />
-      <code>https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg</code>
+      <sub>Copy this code:</sub><br />
+      <code>&lt;a href="https://github.com/ayushraistudio/ayush-trophy"&gt;&lt;img src="https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg" width="700" /&gt;&lt;/a&gt;</code>
     </td>
   </tr>
 </table>
+</div>
 
 ---
 
@@ -77,4 +79,5 @@ node src/generateTrophy.js
 ⭐ Built with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a> and our
 <a href="https://github.com/ayushraistudio/ayush-trophy/graphs/contributors">awesome contributors</a> ⭐
 </p>
+
 
