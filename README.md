@@ -1,8 +1,6 @@
 <div align="center">
-  <img src="./trophy_neon.svg" width="800" />
-  
   <h1>🏆 Personal GitHub Trophy Generator</h1>
-  <p><b>Showcase your GitHub journey with beautiful, automated trophies!</b></p>
+  <p><b>Showcase your GitHub journey with beautiful, automated, and multi-themed trophies!</b></p>
 
   <p>
     <a href="https://github.com/ayushraistudio/ayush-trophy/issues">
@@ -19,25 +17,35 @@
 
 ---
 
-## 🎨 Theme Gallery
-Pick your favorite style, copy the link, and replace `YOUR_USERNAME`. 
-*Clicking the preview will lead back to this project.*
+## 🎨 Available Themes
+Pick a design, copy the link, and replace `YOUR_USERNAME` with your GitHub username.
 
-| **Preview (Click to visit Project)** | **Theme Name** | **Direct URL** |
-| :--- | :--- | :--- |
-| <a href="https://github.com/ayushraistudio/ayush-trophy"><img src="./trophy_neon.svg" width="300" /></a> | **Neon** | `https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg` |
-| <a href="https://github.com/ayushraistudio/ayush-trophy"><img src="./trophy_cyberpunk.svg" width="300" /></a> | **Cyberpunk** | `https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg` |
+### 🟢 Neon Style (Default)
+<a href="https://github.com/ayushraistudio/ayush-trophy">
+  <img src="./trophy_neon.svg" width="800" alt="Neon Trophy" />
+</a>
 
----
+**Copy this link:**
+```text
+[https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg](https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_neon.svg)
 
-## 🚀 Quick Setup
-1. **Fork** this repository.
-2. Go to your fork's **Actions** tab and click **"Enable workflows"**.
-3. Select **Update Trophy** workflow and click **"Run workflow"**.
-4. Copy your theme's URL and paste it into your profile README.
+### 🟣 Cyberpunk Style
+<a href="https://github.com/ayushraistudio/ayush-trophy">
+  <img src="./trophy_cyberpunk.svg" width="800" alt="Cyberpunk Trophy" />
+</a>
 
-## 🤝 Contributing
-Want to build a new design? We love new themes! Please check our **[Contributing Guide](./CONTRIBUTING.md)** and send a PR! 🚀
+**Copy this link:**
+```text
+[https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg](https://raw.githubusercontent.com/YOUR_USERNAME/ayush-trophy/main/trophy_cyberpunk.svg)
+
+🚀 Quick Setup
+Fork this repository to your account.
+Go to Actions tab and click "Enable workflows".
+Select Update Trophy workflow and click "Run workflow".
+Use the link of your favorite theme from above in your Profile README.
+
+🤝 Contributing
+Want to build a new design? We love new themes! Please check our Contributing Guide and send a PR! 🚀
 
 ## 🛠️ Local Development
 ```bash
@@ -46,6 +54,7 @@ cd ayush-trophy
 npm install
 node src/fetchData.js
 node src/generateTrophy.js
+
 
 <br />
 <p align="center">
