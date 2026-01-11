@@ -1,6 +1,10 @@
 # 🏆 GitHub Contribution Showcase API
 
-Give your GitHub profile a premium look with dynamic, high-performance trophies! This API fetches your real-time contributions, active days, and streaks directly from GitHub's GraphQL API.
+ GitHub GraphQL-based trophy API that displays the user’s real GitHub name
+ (or username if no name is set) along with accurate contribution streaks,
+ active days, and total contributions in clean SVG widgets.
+  
+   > Uses GitHub’s official GraphQL API — no scraping, no fake stats.
 
 [![](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ayushraistudio/github-contribution-showcase)
 [![](https://img.shields.io/badge/Maintained%20with-Vercel-black?logo=vercel)](https://vercel.com)
@@ -99,6 +103,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ---
 <p align="center">Made with ❤️ by <a href="https://github.com/ayushraistudio">Ayush Rai</a></p>
+
 
 
 
