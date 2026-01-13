@@ -6,6 +6,7 @@ function generateTrophy(data, theme) {
   var contribs = data.total_contributions;
   var streak = data.current_streak;
 
+  
   // =================================================================
   // 1. NEON THEME (ORIGINAL - NO CHANGE)
   // =================================================================
